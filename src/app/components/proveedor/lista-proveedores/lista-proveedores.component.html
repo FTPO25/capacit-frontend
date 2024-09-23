@@ -1,0 +1,48 @@
+<br>
+<h3>Lista proveedores</h3>
+<table class="table table-stripped">
+  <thead class="table-dark">
+    <tr>
+      <th>Nombre</th>
+      <th>Contacto</th>
+      <th>Dirección</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let proveedor of proveedoresPaginados">
+      <td>{{ proveedor.nombre }}</td>
+      <td>{{ proveedor.contacto }}</td>
+      <td>{{ proveedor.direccion }}</td>
+      <td>
+        <button (click)="actualizarProveedor(proveedor.id)" class="btn btn-info">Actualizar</button>
+        <button (click)="eliminarProveedorPorId(proveedor.id)" class="btn btn-info" style="margin-left : 10px">Eliminar</button>
+        <button (click)="verDetallesProveedor(proveedor.id)" class="btn btn-primary" style="margin-left : 10px">Detalles</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Paginación manual -->
+<nav>
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="paginaActual === 1">
+      <a class="page-link" (click)="cambiarPagina(paginaActual - 1)" aria-label="Anterior">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    <li class="page-item" *ngFor="let page of paginas" [class.active]="paginaActual === page">
+      <a class="page-link" (click)="cambiarPagina(page)">{{ page }}</a>
+    </li>
+
+    <li class="page-item" [class.disabled]="paginaActual === totalPaginas">
+      <a class="page-link" (click)="cambiarPagina(paginaActual + 1)" aria-label="Siguiente">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+

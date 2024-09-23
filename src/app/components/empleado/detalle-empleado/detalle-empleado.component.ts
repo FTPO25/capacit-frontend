@@ -10,7 +10,6 @@ import { EmpleadoService } from '../../../servicios/empleado/empleado.service';
   styleUrls: ['./detalle-empleado.component.css']
 })
 export class DetalleEmpleadoComponent implements OnInit {
-
   id:number;
   empleado:Empleado;
 
